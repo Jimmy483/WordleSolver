@@ -64,7 +64,7 @@ public class Main implements ActionListener {
         jPanel.add(saveButton);
 
         fetchButton=new JButton();
-        fetchButton.setText("Fetch");
+        fetchButton.setText("Search");
         fetchButton.setBounds(40,350,80,30);
         //fetchButton.setLocation(40,250);
         jPanel.add(fetchButton);
@@ -201,36 +201,26 @@ public class Main implements ActionListener {
             char f=jFirst.getText().replace(" ","").substring(0,1).charAt(0);
             jFirst.setText(String.valueOf(f));
             letters[0]=f;
-        }else {
-            letters[0]=0;
         }
         if(!jSecond.getText().replace(" ","").equals("")){
             char s=jSecond.getText().replace(" ","").substring(0,1).charAt(0);
             jSecond.setText(String.valueOf(s));
             letters[1]=s;
-        }else {
-            letters[1]=0;
         }
         if(!jThird.getText().replace(" ","").equals("")){
             char t=jThird.getText().replace(" ","").substring(0,1).charAt(0);
             jThird.setText(String.valueOf(t));
             letters[2]=t;
-        }else {
-            letters[2]=0;
         }
         if(!jFourth.getText().replace(" ","").equals("")){
             char f=jFourth.getText().replace(" ","").substring(0,1).charAt(0);
             jFourth.setText(String.valueOf(f));
             letters[3]=f;
-        }else {
-            letters[3]=0;
         }
         if(!jFifth.getText().replace(" ","").equals("")){
             char f=jFifth.getText().replace(" ","").substring(0,1).charAt(0);
             jFifth.setText(String.valueOf(f));
             letters[4]=f;
-        }else {
-            letters[4]=0;
         }
 
 
@@ -246,7 +236,7 @@ public class Main implements ActionListener {
             while((line= bR.readLine())!=null){
                 for(int i=0;i<5;i++){
                     if(letters[i]!='\0'){
-                        if(line.charAt(i)!=letters[i]){
+                        if(line.toLowerCase().charAt(i)!=letters[i]){
                             addOr=false;
                         }
                     }
@@ -271,7 +261,10 @@ public class Main implements ActionListener {
         }
         if(wordsArray.size()>0){
             nextButton.setEnabled(true);
+        }else {
+            JOptionPane.showMessageDialog(jf,"Oops no result found");
         }
+
 
 
     }
