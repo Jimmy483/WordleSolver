@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -165,7 +166,7 @@ public class Main implements ActionListener {
         }
         //String word=saveTextF.getText().toLowerCase().replace(" ","");
         try {
-            BufferedWriter bW=new BufferedWriter(new FileWriter("words.txt",true));
+            BufferedWriter bW=new BufferedWriter(new FileWriter(FileSystemView.getFileSystemView().getHomeDirectory()+"\\words.txt",true));
             bW.write(word+"\n");
             bW.close();
             //bR.close();
@@ -225,6 +226,9 @@ public class Main implements ActionListener {
 
 
         try {
+            //File home = FileSystemView.getFileSystemView().getHomeDirectory();
+            //System.out.println(home.getAbsolutePath());
+            System.out.println(FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath()+ "\\words.txt");
             BufferedReader bR=new BufferedReader(new FileReader("words.txt"));
             String line="";
             boolean addOr=true;
