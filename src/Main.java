@@ -196,7 +196,6 @@ public class Main implements ActionListener {
         }
 
 
-
         if(!jFirst.getText().replace(" ","").equals("")){
             char f=jFirst.getText().replace(" ","").substring(0,1).charAt(0);
             jFirst.setText(String.valueOf(f));
@@ -224,11 +223,7 @@ public class Main implements ActionListener {
         }
 
 
-        char l='g';
-        System.out.println(letters[1]);
-        if(l==letters[0]){
-            System.out.println("treeeee");
-        }
+
         try {
             BufferedReader bR=new BufferedReader(new FileReader("words.txt"));
             String line="";
@@ -259,7 +254,8 @@ public class Main implements ActionListener {
             fetchTextF.setText(wordsArray.get(0));
             //nextButton.setEnabled(true);
         }
-        if(wordsArray.size()>0){
+        System.out.println(wordsArray.size());
+        if(wordsArray.size()>1){
             nextButton.setEnabled(true);
         }else {
             JOptionPane.showMessageDialog(jf,"Oops no result found");
