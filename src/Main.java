@@ -194,31 +194,32 @@ public class Main implements ActionListener {
             previousButton.setEnabled(false);
             nextButton.setEnabled(false);
             index=0;
+            letters=new char[5];
         }
 
 
         if(!jFirst.getText().replace(" ","").equals("")){
-            char f=jFirst.getText().replace(" ","").substring(0,1).charAt(0);
+            char f=jFirst.getText().replace(" ","").toLowerCase().substring(0,1).charAt(0);
             jFirst.setText(String.valueOf(f));
             letters[0]=f;
         }
         if(!jSecond.getText().replace(" ","").equals("")){
-            char s=jSecond.getText().replace(" ","").substring(0,1).charAt(0);
+            char s=jSecond.getText().replace(" ","").toLowerCase().substring(0,1).charAt(0);
             jSecond.setText(String.valueOf(s));
             letters[1]=s;
         }
         if(!jThird.getText().replace(" ","").equals("")){
-            char t=jThird.getText().replace(" ","").substring(0,1).charAt(0);
+            char t=jThird.getText().replace(" ","").toLowerCase().substring(0,1).charAt(0);
             jThird.setText(String.valueOf(t));
             letters[2]=t;
         }
         if(!jFourth.getText().replace(" ","").equals("")){
-            char f=jFourth.getText().replace(" ","").substring(0,1).charAt(0);
+            char f=jFourth.getText().replace(" ","").toLowerCase().substring(0,1).charAt(0);
             jFourth.setText(String.valueOf(f));
             letters[3]=f;
         }
         if(!jFifth.getText().replace(" ","").equals("")){
-            char f=jFifth.getText().replace(" ","").substring(0,1).charAt(0);
+            char f=jFifth.getText().replace(" ","").toLowerCase().substring(0,1).charAt(0);
             jFifth.setText(String.valueOf(f));
             letters[4]=f;
         }
@@ -229,7 +230,7 @@ public class Main implements ActionListener {
             //File home = FileSystemView.getFileSystemView().getHomeDirectory();
             //System.out.println(home.getAbsolutePath());
             System.out.println(FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath()+ "\\words.txt");
-            BufferedReader bR=new BufferedReader(new FileReader("words.txt"));
+            BufferedReader bR=new BufferedReader(new FileReader(FileSystemView.getFileSystemView().getHomeDirectory()+"\\words.txt"));
             String line="";
             boolean addOr=true;
             while((line= bR.readLine())!=null){
@@ -261,8 +262,10 @@ public class Main implements ActionListener {
         System.out.println(wordsArray.size());
         if(wordsArray.size()>1){
             nextButton.setEnabled(true);
-        }else {
+        }
+        if(wordsArray.size()==0){
             JOptionPane.showMessageDialog(jf,"Oops no result found");
+            fetchTextF.setText("");
         }
 
 
