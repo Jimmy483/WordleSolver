@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main implements ActionListener {
     public static void main(String[] args) {
@@ -194,9 +195,16 @@ public class Main implements ActionListener {
             previousButton.setEnabled(false);
             nextButton.setEnabled(false);
             index=0;
-            letters=new char[5];
+
+            //Arrays.fill(new char[][]{letters},null);
+//            for(int i=0;i<letters.length;i++){
+//                letters[i]='\0';
+//            }
+
+            //letters=new char[5];
         }
 
+        letters=new char[5];
 
         if(!jFirst.getText().replace(" ","").equals("")){
             char f=jFirst.getText().replace(" ","").toLowerCase().substring(0,1).charAt(0);
@@ -267,7 +275,7 @@ public class Main implements ActionListener {
             JOptionPane.showMessageDialog(jf,"Oops no result found");
             fetchTextF.setText("");
         }
-
+        letters=null;
 
 
     }
